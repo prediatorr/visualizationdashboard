@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const ENDPOINT = require("./backend/endpoints");
+const router = require("./backend/router");
 
 app.use(express.json());
 
@@ -9,6 +10,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+app.use(ENDPOINT, router);
 
 mongoose
   .connect(
